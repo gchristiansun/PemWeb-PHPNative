@@ -1,0 +1,2 @@
+Primary color: B88E2F
+Secondary color: FFF3E3

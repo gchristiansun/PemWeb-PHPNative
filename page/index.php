@@ -58,6 +58,13 @@ $products = [
         'badge' => ''
     ],
 ];
+
+session_start();
+$showPopup = false;
+if (isset($_SESSION['subscribed']) && $_SESSION['subscribed'] === true) {
+    $showPopup = true;
+    unset($_SESSION['subscribed']); 
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,10 +74,12 @@ $products = [
   <title>Beranda</title>
   <link rel="stylesheet" href="../style/style.css">
   <link rel="stylesheet" href="../style/popup.css">
+  <link rel="stylesheet" href="../style/subscribe.css">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
   <script src="../script/script.js" defer></script>
+  <script src="../script/subscribe.js" defer></script>
 </head>
 <body>
   <!-- Header -->
@@ -207,9 +216,23 @@ $products = [
         </div>
 
         <div class="newsletter">
+          <form id="subscribeForm">
             <h3>Newsletter</h3>
-            <input type="text" placeholder="Enter Your Email Address">
-            <button>SUBSCRIBE</button>
+            <input type="email" name="email" id="emailInput" placeholder="Enter Your Email Address">
+            <button type="submit">SUBSCRIBE</button>
+          </form>
+        </div>
+
+        <!-- Pop up subscribe newsletter -->
+        <div class="popup-overlay-newsletter" id="popupOverlayNewsletter" style="display: none;">
+          <div class="popup-newsletter">
+            <p>Terima kasih telah berlangganan!</p>
+            <button id="closePopup">
+              <span class="material-symbols-outlined">
+                close
+              </span>
+            </button>
+          </div>
         </div>
     </div>
     <div class="footer-bottom">

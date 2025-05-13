@@ -66,11 +66,14 @@ $products = [
   <meta charset="UTF-8">
   <title>Beranda</title>
   <link rel="stylesheet" href="../style/style.css">
+  <link rel="stylesheet" href="../style/popup.css">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" el="stylesheet">
-  <script src="script/script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
+  <script src="../script/script.js" defer></script>
 </head>
 <body>
+  <!-- Header -->
   <header class="navbar">
     <div class="container">
       <!-- Logo -->
@@ -79,7 +82,7 @@ $products = [
         <span class="text-logo">Furniro</span>
       </div>
 
-      <!-- Navigation Links -->
+      <!-- Navigation -->
       <nav class="nav-links">
         <a href="#">Home</a>
         <a href="#">Shop</a>
@@ -87,7 +90,7 @@ $products = [
         <a href="#">Contact</a>
       </nav>
 
-      <!-- Icon Links -->
+      <!-- Icon -->
       <div class="icons">
         <span class="material-symbols-outlined">
           person_alert
@@ -105,8 +108,9 @@ $products = [
     </div>
   </header>
 
-
+  <!-- Main content -->
   <main>
+    <!-- Hero Section -->
     <div class="container-banner">
       <div class="box">
         <span>New Arrival</span>
@@ -121,11 +125,13 @@ $products = [
       </div>
     </div>
 
+    <!-- Section 2: title -->
     <section>
       <h1>Browse The Range</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </section>
 
+    <!-- Section 3: furtniture image -->
     <section>
       <div class="container-image">
         <img src="../img/image4.png" alt="">
@@ -141,13 +147,16 @@ $products = [
       </div>
     </section>
 
+    <!-- Section 4: title -->
     <section>
       <h1>Our Products</h1>
     </section>
 
+    <!-- Section 5: Card products -->
     <section>
       <div class="grid">
         <?php foreach ($products as $product): ?>
+          <a href="?popup=true" onclick="return openPopup(event)">
             <div class="card">
                 <?php if ($product['badge']): ?>
                     <div class="badge"> <?= $product['badge'] ?> </div>
@@ -157,10 +166,20 @@ $products = [
                 <p><?= $product['description'] ?></p>
                 <p><strong><?= $product['price'] ?></strong></p>
             </div>
+          </a>
         <?php endforeach; ?>
       </div>
     </section>
+
+    <!-- Show popup -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <iframe src="" id="popupFrame"></iframe>
+        </div>
+    </div>
   </main>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-grid">
         <div>
@@ -197,8 +216,5 @@ $products = [
         2023 Funiro. All rights reserved
     </div>
   </footer>
-
-
-  
 </body>
 </html>
